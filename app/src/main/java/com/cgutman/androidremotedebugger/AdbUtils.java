@@ -45,8 +45,9 @@ public class AdbUtils {
     }
 
     public static boolean safeClose(Closeable c) {
-        if (c == null)
+        if (c == null) {
             return false;
+        }
 
         try {
             c.close();

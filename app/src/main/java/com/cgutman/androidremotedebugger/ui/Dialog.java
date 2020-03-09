@@ -21,8 +21,9 @@ public class Dialog implements Runnable {
     }
 
     public static void closeDialogs() {
-        for (Dialog d : rundownDialogs)
+        for (Dialog d : rundownDialogs) {
             d.alert.dismiss();
+        }
 
         rundownDialogs.clear();
     }
@@ -34,8 +35,9 @@ public class Dialog implements Runnable {
     @Override
     public void run() {
         // If we're dying, don't bother creating a dialog
-        if (activity.isFinishing())
+        if (activity.isFinishing()) {
             return;
+        }
 
         alert = new AlertDialog.Builder(activity).create();
 
@@ -49,8 +51,9 @@ public class Dialog implements Runnable {
                 alert.dismiss();
                 rundownDialogs.remove(this);
 
-                if (endAfterDismiss)
+                if (endAfterDismiss) {
                     activity.finish();
+                }
             }
         });
 

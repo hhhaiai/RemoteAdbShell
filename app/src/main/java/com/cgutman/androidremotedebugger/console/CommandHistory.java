@@ -24,24 +24,27 @@ public class CommandHistory {
         int size = ch.prefs.getInt("Size", 0);
         for (int i = 0; i < size; i++) {
             String cmd = ch.prefs.getString("" + i, null);
-            if (cmd != null)
+            if (cmd != null) {
                 ch.add(cmd);
+            }
         }
 
         return ch;
     }
 
     public void add(String command) {
-        if (previousCommands.size() > historyLimit)
+        if (previousCommands.size() > historyLimit) {
             previousCommands.removeFirst();
+        }
 
         previousCommands.add(command);
     }
 
     public void populateMenu(ContextMenu menu) {
         /* We iterate backwards because the first item added is the latest in the command list */
-        for (int i = previousCommands.size() - 1; i >= 0; i--)
+        for (int i = previousCommands.size() - 1; i >= 0; i--) {
             menu.add(Menu.NONE, 0, Menu.NONE, previousCommands.get(i));
+        }
     }
 
     public void save() {

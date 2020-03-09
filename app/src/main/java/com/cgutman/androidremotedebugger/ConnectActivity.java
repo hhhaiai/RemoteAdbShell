@@ -90,11 +90,10 @@ public class ConnectActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(View view) {
         Intent shellIntent = new Intent(this, AdbShell.class);
-        int port;
 
         shellIntent.putExtra("IP", ipField.getText().toString());
         try {
-            port = Integer.parseInt(portField.getText().toString());
+            int port = Integer.parseInt(portField.getText().toString());
             if (port <= 0 || port > 65535) {
                 Dialog.displayDialog(this, "Invalid Port", "The port number must be between 1 and 65535", false);
                 return;

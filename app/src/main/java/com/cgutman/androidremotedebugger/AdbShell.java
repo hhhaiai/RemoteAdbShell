@@ -314,8 +314,9 @@ public class AdbShell extends Activity implements DeviceConnectionListener, OnKe
     public boolean onEditorAction(TextView textView, int actionId, KeyEvent event) {
         /* We always return false because we want to dismiss the keyboard */
 
-        if (commandBox.getText().length() == 0 || connection == null)
+        if (commandBox.getText().length() == 0 || connection == null) {
             return false;
+        }
 
         if (actionId == EditorInfo.IME_ACTION_DONE) {
             String text = commandBox.getText().toString();

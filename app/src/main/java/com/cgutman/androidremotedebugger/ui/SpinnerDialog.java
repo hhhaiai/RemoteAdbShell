@@ -29,8 +29,9 @@ public class SpinnerDialog implements Runnable, OnCancelListener {
     }
 
     public static void closeDialogs() {
-        for (SpinnerDialog d : rundownDialogs)
+        for (SpinnerDialog d : rundownDialogs) {
             d.progress.dismiss();
+        }
 
         rundownDialogs.clear();
     }
@@ -45,8 +46,9 @@ public class SpinnerDialog implements Runnable, OnCancelListener {
 
         if (progress == null) {
             // If we're dying, don't bother creating a dialog
-            if (activity.isFinishing())
+            if (activity.isFinishing()) {
                 return;
+            }
 
             progress = new ProgressDialog(activity);
 
